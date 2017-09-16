@@ -1,37 +1,26 @@
 {
-  "title": "Business Casual",
-  "name": "startbootstrap-business-casual",
-  "version": "4.0.0-beta",
-  "description": "A casual HTML website theme for businesses built with Bootstrap",
-  "keywords": [
-    "css",
-    "sass",
-    "html",
-    "responsive",
-    "theme",
-    "template"
-  ],
-  "homepage": "https://startbootstrap.com/template-overviews/business-casual",
-  "bugs": {
-    "url": "https://github.com/BlackrockDigital/startbootstrap-business-casual/issues",
-    "email": "feedback@startbootstrap.com"
+  "name": "Celebridade",
+  "version": "1.0.0",
+  "description": "",
+  "private": "true",
+  "main": "index.js",
+  "scripts": {
+    "build-css": "node-sass scss/ -o public/css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\"",
+    "dev": ""
   },
-  "license": "MIT",
-  "author": "Start Bootstrap",
-  "contributors": [
-    "David Miller (http://davidmiller.io/)"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/BlackrockDigital/startbootstrap-business-casual.git"
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.7",
+    "concurrently": "^3.2.0",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
+    "node-sass": "^4.5.0",
+    "nodemon": "^1.11.0"
   },
   "dependencies": {
-    "bootstrap": "^4.0.0-beta",
-    "jquery": "^3.2.1",
-    "popper.js": "^1.11.1"
-  },
-  "devDependencies": {
-    "browser-sync": "2.18.13",
-    "gulp": "^3.9.1"
+    "browser-sync": "^2.18.13"
   }
 }
