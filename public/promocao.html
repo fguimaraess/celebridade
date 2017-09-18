@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-     <title>Celebridade Salgados</title>
+  <title>Celebridade Salgados</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
-    <script src="js/firebase.js" charset="utf-8"></script>
-    <!-- Custom fonts for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> 
-    <!-- Custom styles for this template -->
-    <link href="css/business-casual.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+  <script src="js/firebase.js" charset="utf-8"></script>
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+    rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic"
+    rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- Custom styles for this template -->
+  <link href="css/business-casual.css" rel="stylesheet">
 
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <div class="tagline-upper text-center text-heading text-shadow text-white mt-2 d-none d-lg-block">Celebridade</div>
-    <div class="tagline-lower text-center text-expanded text-shadow text-uppercase text-white mb-5 d-none d-lg-block">ITAIPUAÇU, MARICÁ - RJ</div>
+  <div class="tagline-upper text-center text-heading text-shadow text-white mt-2 d-none d-lg-block">Celebridade</div>
+  <div class="tagline-lower text-center text-expanded text-shadow text-uppercase text-white mb-5 d-none d-lg-block">ITAIPUAÇU, MARICÁ - RJ</div>
 
-<!-- Navigation -->
+  <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light bg-faded py-lg-4">
     <div class="container">
       <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="index.html">Celebridade</a>
@@ -63,39 +65,38 @@
     </div>
   </nav>
 
-    <div class="container">
+  <div class="container">
 
-      <div class="bg-faded p-4 my-4">
-        <hr class="divider">
-        <h2 class="text-center text-lg text-uppercase my-0">Promoções
-          <strong>Celebridade</strong>
-        </h2>
-        <hr class="divider">
+    <div class="bg-faded p-4 my-4">
+      <hr class="divider">
+      <h2 class="text-center text-lg text-uppercase my-0">Promoções
+        <strong>Celebridade</strong>
+      </h2>
+      <hr class="divider">
 
-        
-        <h4 class="text-center text-lg text-uppercase my-0">
-          Promoções válidas no dia de hoje (<span id="diaDeHoje"></span>)
-        </h4>
-        <hr class="divider">
 
-        <h2 class="text-center text-lg my-0">
+      <h4 class="text-center text-lg text-uppercase my-0">
+        Promoções válidas no dia de hoje (<span id="diaDeHoje"></span>)
+      </h4>
+      <hr class="divider">
 
-        <!-- Promoções -->
-        <div class="table-responsive" id="table-pagina-promocao">
-        <table class="table">
-          <thead>
+      <!-- Promoções -->
+      <div class="table-responsive" id="table-pagina-promocao">
+        <h2 class="text-lg my-0">
+          <table class="table">
+            <thead>
               <tr id="template-linha">
-              <th hidden>Id</th>
-              <th>Descrição da Promoção</th>
-              <th>Cupom</th>
-            </tr>
-         </thead>
-         <tbody id="body-pagina-promocao"> </tbody>
-      </table>
-  
-    </div>
-        </h2>
+                <th hidden>Id</th>
+                <th>Descrição da Promoção</th>
+                <th>Cupom</th>
+              </tr>
+            </thead>
+            <tbody id="body-pagina-promocao"> </tbody>
+          </table>
+
       </div>
+      </h2>
+    </div>
 
     <!-- /.container -->
 
@@ -111,6 +112,6 @@
     <script src="vendor/popper/popper.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
-  </body>
+</body>
 
 </html>

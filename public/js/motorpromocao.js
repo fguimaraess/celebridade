@@ -9,19 +9,25 @@ var page = {
     tablePromocao: document.querySelector('#table-promocao')
 }
 
-window.addEventListener('load', function(){
+window.addEventListener('load', function () {
     getPromocoes();
+    var user = firebase.auth().currentUser;
+    firebase.auth().onAuthStateChanged(function (user) {
+        //user.reauthenticate(credential).then(function(){
+        if (!user) {
+            window.location = '/loginpromocao.html';
+        }
+    });
 });
 
-page.btnCriar.addEventListener('click', function(){
+page.btnCriar.addEventListener('click', function () {
     var promocao = {
         titulo: page.tituloPromocao.value,
         descricao: page.descricaoPromocao.value,
         mensagem: page.mensagemPromocao.value
     }
-    if(promocao.titulo != "" && promocao.descricao != "" && promocao.mensagem != "")
-    {
-        firebase.database().ref('/promocao/').push(promocao).then(function(promocaoRef){
+    if (promocao.titulo != "" && promocao.descricao != "" && promocao.mensagem != "") {
+        firebase.database().ref('/promocao/').push(promocao).then(function (promocaoRef) {
             promocao.uid = promocaoRef.key;
             page.promocoes[promocaoRef.key] = (promocao);
         }).then(alert("Promocao criada com sucesso!!"));
@@ -31,7 +37,7 @@ page.btnCriar.addEventListener('click', function(){
     }
 });
 
-function getPromocoes(){
+function getPromocoes() {
     limparTabela();
     firebase.database().ref('/promocao/').once('value').then(function (snapshot) {
         snapshot.forEach(function (promocaoRef) {
@@ -43,7 +49,7 @@ function getPromocoes(){
     });
 }
 
-function preencheTabelaPromocao(promocao){
+function preencheTabelaPromocao(promocao) {
     var html = '';
     html += '<tr class="idDasPromocoes" id="' + promocao.uid + '">';
     html += '<td class="tituloPromocao">' + promocao.titulo + '</td>';
@@ -54,8 +60,8 @@ function preencheTabelaPromocao(promocao){
     $('#body-promocao').append(html);
 }
 
-function excluirPromocao(idPromocao){
-    firebase.database().ref('/promocao/'+idPromocao).remove().then(alert("Promocao excluída com sucesso!!"));
+function excluirPromocao(idPromocao) {
+    firebase.database().ref('/promocao/' + idPromocao).remove().then(alert("Promocao excluída com sucesso!!"));
     getPromocoes();
 }
 
@@ -66,12 +72,12 @@ function limparTabela() {
     });
 }
 
-page.criarPromocao.addEventListener('click', function(){
+page.criarPromocao.addEventListener('click', function () {
     $("#table-promocao").hide();
     $("#criapromo").show();
 });
 
-page.voltarPagePromocao.addEventListener('click', function(){
+page.voltarPagePromocao.addEventListener('click', function () {
     $("#table-promocao").show();
     $("#criapromo").hide();
 });

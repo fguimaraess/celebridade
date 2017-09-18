@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Celebridade Salgados</title>
+  <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+  <script src="js/firebase.js" charset="utf-8"></script>
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+    rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic"
+    rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- Custom styles for this template -->
+  <link href="css/business-casual.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="tagline-upper text-center text-heading text-shadow text-white mt-2 d-none d-lg-block">Celebridade</div>
+  <div class="tagline-lower text-center text-expanded text-shadow text-uppercase text-white mb-5 d-none d-lg-block">ITAIPUAÇU, MARICÁ - RJ</div>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-faded py-lg-4">
+    <div class="container">
+      <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="#">Celebridade</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item active px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="index.html">Home
+                <span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="pagepromocao.html">Área Promoções</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Promoções -->
+  <div class="table-responsive" id="table-produto">
+    <table class="table" style="color: White;">
+      <thead>
+        <tr id="template-linha">
+          <th hidden>Id</th>
+          <th>Foto</th>
+          <th>Nome</th>
+          <th>Preço Cong</th>
+          <th>Preço Frito</th>
+          <th>Qtd</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="body-produto"> </tbody>
+    </table>
+    <input class="btn btn-primary" type="button" value="Criar Produto" id="criarNovoProduto">
+  </div>
+
+  <!-- FORM CRIAR PRODUTO -->
+  <div id="criarproduto" style="display: none;">
+    <form>
+      <div class="file">
+        <label for="fileButton" style="color: White;">Foto Produto:</label>
+          <input type="file" id="fileButton"><br/>
+          <progress value="0" max="100" id="uploader"></progress>
+          <div id="mostra-foto">
+            <img src=""/>
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="nome-produto" style="color: White;">Nome Produto:</label>
+        <input type="title" class="form-control" id="nome-produto">
+      </div>
+      <div class="form-group">
+        <label for="precoCongelado" style="color: White;">Preço congelado:</label>
+        <input type="title" class="form-control" id="precoCongelado">
+      </div>
+      <div class="form-group">
+        <label for="precoFrito" style="color: White;">Preço frito:</label>
+        <input type="title" class="form-control" id="precoFrito">
+      </div>
+      <div class="form-group">
+        <label for="quantidade" style="color: White;">Quantidade:</label>
+        <input type="title" class="form-control" id="quantidade">
+      </div>
+      <input class="btn btn-primary" type="button" value="Criar" id="criarProduto">
+      <input class="btn btn-primary" type="button" value="Voltar" id="voltarProduto">
+    </form>
+  </div>
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/popper/popper.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <footer>
+    <script src="js/motorproduto.js" charset="utf-8"></script>
+
+  </footer>
+
+</body>
+
+</html>
