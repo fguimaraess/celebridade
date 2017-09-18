@@ -1,5 +1,5 @@
 var pageProduto = {
-    btnCriarProduto: document.querySelector('#criarproduto'),
+    btnCriarProduto: document.querySelector('#btnCriarProduto'),
     fotoProduto: document.querySelector('#foto-produto'),
     nomeProduto: document.querySelector('#nome-produto'),
     precoCongelado: document.querySelector('#precoCongelado'),
@@ -14,15 +14,6 @@ var pageProduto = {
     mostraFoto: document.querySelector('#mostra-foto')
 }
 
-window.addEventListener('load', function () {
-    getProdutos();
-    var user = firebase.auth().currentUser;
-    firebase.auth().onAuthStateChanged(function (user) {
-        if (!user) {
-            window.location = '/loginpromocao.html';
-        }
-    });
-});
 
 pageProduto.btnCriarProduto.addEventListener('click', function () {
     var produto = {
@@ -32,15 +23,32 @@ pageProduto.btnCriarProduto.addEventListener('click', function () {
         precoFrito: pageProduto.precoFrito.value,
         quantidade: pageProduto.quantidade.value
     }
-    if (pageProduto.nomeProduto.value != "" && pageProduto.precoCongelado.value != "" && pageProduto.precoFrito.value != "") {
-        firebase.database().ref('/produto/').push(produto).then(function (produtoRef) {
+    if (pageProduto.nomeProduto.value != "" && pageProduto.precoCongelado.value != "" && 
+    pageProduto.precoFrito.value != "" && pageProduto.fotoProduto.value != "" && pageProduto.quantidade.value != "") {
+        criarProduto(produto);
+    } else {
+        alert("Preencha os campos!");
+    }
+});
+
+function criarProduto(produto){
+    firebase.database().ref('/produto/').push(produto).then(function (produtoRef) {
             produto.uid = produtoRef.key;
             pageProduto.produtos[produtoRef.key] = (produto);
         }).then(alert("Produto criado com sucesso!!"));
         $("#table-produto").show();
         $("#criarproduto").hide();
         getProdutos();
-    }
+}
+
+window.addEventListener('load', function () {
+    getProdutos();
+    var user = firebase.auth().currentUser;
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (!user) {
+            window.location = '/loginpromocao.html';
+        }
+    });
 });
 
 function getProdutos() {
