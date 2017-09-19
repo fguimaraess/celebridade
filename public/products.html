@@ -65,27 +65,27 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container" id="container">
         <div class="bg-faded p-6 my-6">
             <hr class="divider" style="border-color: transparent;">
             <h2 class="text-center text-lg text-uppercase my-0">Produtos
                 <strong>Celebridade</strong></h2>
-        <hr class="divider">
-        <div class="row">
-            <div class="col-md-8 col-sm-12 col-xs-12 col-lg-12">
-                <div class="table-responsive">
-                    <div class="text-center">
-                    <table id="table-produtos" align="center">
-                        <tbody id="body-produtos"></tbody>
-                    </table>
+            <hr class="divider">
+            <div class="row">
+                <div class="col-md-8 col-sm-12 col-xs-12 col-lg-12">
+                    <div class="table-responsive">
+                        <div class="text-center">
+                            <table id="table-produtos" align="center">
+                                <tbody id="body-produtos"></tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
+
         </div>
         <hr class="divider" style="border-color: transparent;">
-        <div class="bg-faded p-6 my-6">
+        <div class="bg-faded p-6 my-6" id="promocoes">
             <br/>
             <hr class="divider">
             <h2 class="text-center text-lg text-uppercase my-0">Promoções
@@ -103,6 +103,36 @@
         <hr class="divider" style="border-color: transparent;">
     </div>
     <!-- /.container -->
+
+    <div id="areaCompra" style="display: none;">
+        <hr class="divider" style="border-color: transparent;">
+        <div class="bg-faded p-6 my-6">
+            <div class="row">
+                <div class="col-md-8 col-sm-12 col-xs-12 col-lg-12">
+                    <div class="table-responsive">
+                        <div class="text-center">
+                            <table id="table-compra">
+                                <thead>
+                                    <th>Produto&nbsp;&nbsp;</th>
+                                    <th>Quantidade&nbsp;&nbsp;</th>
+                                    <th>Tipo&nbsp;&nbsp;&nbsp;</th>
+                                    <!--<th style="float: right;">Valor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                    <th>Confirmar</th>-->
+                                </thead>
+                                <tbody id="body-compra"></tbody>
+                            </table>
+                            <br/>
+                            <span style="float:left;">Valor do Pedido: </span><span style="float: left;" id="valorPedido"></span>
+                            <br/>
+                            <input class="btn btn-primary" style="float: left;" type="button" value="Enviar Pedido" id="enviarPedido">
+                            <input class="btn btn-primary" style="float: center;" type="button" value="Limpar Carrinho" id="limparCarrinho">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="divider" style="border-color: transparent;">
+    </div>
 
     <footer class="bg-faded text-center py-5">
         <script src="js/produto.js" charset="utf-8"></script>
