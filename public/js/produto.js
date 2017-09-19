@@ -3,11 +3,11 @@ var pageProdCliente = {
     produtos: [],
     diaDeHoje: document.querySelector('#diaDeHoje'),
     limparCarrinho: document.querySelector('#limparCarrinho'),
-    enviarPedido: document.querySelector('#enviarPedido')
+    enviarPedido: document.querySelector('#enviarPedido'),
+    tableCompra: document.querySelector('#table-compra')
 }
 var htmlCarrinho = '';
 var carrinho = [];
-var i = 0;
 var valorPedido = 0;
 var qtdProduto;
 var cong;
@@ -60,60 +60,57 @@ function limparTabelaProd() {
     });
 }
 
-
 function addCompra(idProduto) {
     var produto = getProdutoById(idProduto);
-
     $("#areaCompra").show();
     $("#promocoes").hide();
-    htmlCarrinho = '';
-    htmlCarrinho += '<tr class="idDosProdutos" id="' + produto.uid + '">';
-    htmlCarrinho += '<td class="nomeDoProduto">' + produto.nomeProduto + '</td>';
-    htmlCarrinho += '<td class="qtdDoProduto"><input size="2" type="text" id="qtdProduto" value="1"/></td>';
-    htmlCarrinho += '<td class="tipoProduto"><select id="tipoProd">';
-    htmlCarrinho += '<option value="congelado">Congelado</option>';
-    htmlCarrinho += '<option value="frito">Frito</option>';
-    htmlCarrinho += '</select></td>';
-    //htmlCarrinho += '<td class="valorProduto" id="precoProd">R$' + produto.precoCongelado + '</td>';
-    htmlCarrinho += '<td class="confirmar" id="confirmaProduto"><a onclick="addCarrinho(\'' + produto.uid + '\' )" href="#"><i class="fa fa-check fa-2x" aria-hidden="true" style="color:green; cursor: pointer;"></i></a></td>';
-    htmlCarrinho += '</tr>';
-    $('#body-compra').append(htmlCarrinho);
-    qtdProduto = $("#qtdProduto").val();
-    cong = qtdProduto * produto.precoCongelado;
+
+    //Verifica se já existe o produto no carrinho
+    if (carrinho[produto.uid]) {
+        alert("O produto já foi adicionado ao carrinho!");
+    } else {
+        htmlCarrinho = '';
+        htmlCarrinho += '<tr class="idDosProdutosCarrinho" id="' + produto.uid + '">';
+        htmlCarrinho += '<td class="nomeDoProduto">' + produto.nomeProduto + '</td>';
+        htmlCarrinho += '<td class="qtdDoProduto-"><select id="qtdProduto' + produto.uid + '">';
+        htmlCarrinho += '<option value="1">1</option>';
+        htmlCarrinho += '<option value="2">2</option>';
+        htmlCarrinho += '<option value="3">3</option>';
+        htmlCarrinho += '<option value="4">4</option>';
+        htmlCarrinho += '<option value="5">5</option>';
+        htmlCarrinho += '<option value="6">6</option>';
+        htmlCarrinho += '<option value="7">7</option>';
+        htmlCarrinho += '<option value="8">8</option>';
+        htmlCarrinho += '<option value="9">9</option>';
+        htmlCarrinho += '<option value="10">10</option>';
+        htmlCarrinho += '</select></td>';
+        htmlCarrinho += '<td class="tipoProduto"><select id="tipoProd' + produto.uid + '">';
+        htmlCarrinho += '<option value="congelado">Congelado</option>';
+        htmlCarrinho += '<option value="frito">Frito</option>';
+        htmlCarrinho += '</select></td>';
+        htmlCarrinho += '<td class="confirmar" id="confirmaProduto">&nbsp;&nbsp;<a onclick="addCarrinho(\'' + produto.uid + '\' )" href="#"><i class="fa fa-check" aria-hidden="true" style="color:green; cursor: pointer;"></i> Adicionar</a></td>';
+        htmlCarrinho += '</tr>';
+        $('#body-compra').append(htmlCarrinho);
+        qtdProduto = $("#qtdProduto" + produto.uid).val();
+        cong = qtdProduto * produto.precoCongelado;
+    }
     carrinho[produto.uid] = produto;
-
-    //GetValorQuantidade
-    $("#qtdProduto").on('change', function () {
-        qtdProduto = $("#qtdProduto").val();
-        cong = qtdProduto * produto.precoCongelado;
-        frito = qtdProduto * produto.precoFrito;
-        /*if($('#tipoProd').val() == 'congelado'){
-            $("#precoProd").text("R$"+cong);
-        } else {
-            $("#precoProd").text("R$"+frito);
-        }*/
-    });
-
-    //GetValorCongelado ou Frito
-    $('#tipoProd').on('change', function () {
-        qtdProduto = $("#qtdProduto").val();
-        cong = qtdProduto * produto.precoCongelado;
-        frito = qtdProduto * produto.precoFrito;
-        /*if($('#tipoProd').val() == 'congelado'){
-            $("#precoProd").text("R$"+cong);
-        } else {
-            $("#precoProd").text("R$"+frito);
-        }*/
-    });
-    i++;
 }
 
 function addCarrinho(idProdutoCarrinho) {
     var tempProd = getProdutoById(idProdutoCarrinho);
-    if ($('#tipoProd').val() == 'congelado') {
+    tempProd.valor = 0;
+
+    if ($('#tipoProd'+tempProd.uid).val() == 'congelado') {
+        qtdProduto = $("#qtdProduto" + tempProd.uid).val();
+        cong = qtdProduto * tempProd.precoCongelado;
         carrinho[tempProd.uid].valor = cong;
+        carrinho[tempProd.uid].tipo = 'congelado(s)';
     } else {
+        qtdProduto = $("#qtdProduto" + tempProd.uid).val();
+        frito = qtdProduto * tempProd.precoFrito;
         carrinho[tempProd.uid].valor = frito;
+        carrinho[tempProd.uid].tipo = 'frito(s)';
     }
     carrinho[tempProd.uid].qtd = qtdProduto;
     alert("Produto adicionado");
@@ -122,22 +119,69 @@ function addCarrinho(idProdutoCarrinho) {
 
 function getValorPedido() {
     valorPedido = 0;
+    if (carrinho.pedido)
+        delete carrinho.pedido;
     for (var key in carrinho) {
         valorPedido += carrinho[key].valor;
     }
-    $("#valorPedido").text(" R$" + valorPedido);
+    if (isNaN(valorPedido)) {
+        $("#valorPedido").text(" Adicione todos os produtos ao pedido");
+    } else {
+        $("#valorPedido").text(" R$" + valorPedido);
+    }
+}
+
+pageProdCliente.enviarPedido.addEventListener('click', function () {
+    var msgWpp;
+    var pedido = [];
+    if (valorPedido == 0 || isNaN(valorPedido)) {
+        alert("Adicione os produtos ao carrinho!");
+    } else {
+        msgWpp = 'Olá, segue o pedido realizado através do site:\n';
+        for (var key in carrinho) {
+            if (carrinho[key].valor == undefined) {
+                carrinho.pedido = 'Erro';
+            } else {
+                carrinho.pedido = 'Ok';
+                msgWpp += ' - ' + carrinho[key].qtd + ' pacote(s) de ' + carrinho[key].nomeProduto + ' ' + carrinho[key].tipo + '\n';
+                pedido[carrinho[key].uid] = carrinho[key];
+                delete pedido[carrinho[key].uid].fotoProduto;
+                delete pedido[carrinho[key].uid].precoFrito;
+                delete pedido[carrinho[key].uid].precoCongelado;
+                delete pedido[carrinho[key].uid].quantidade;
+            }
+        }
+        if (carrinho.pedido == 'Erro') {
+            alert("Adicione os produtos ao carrinho!");
+        } else {
+            msgWpp += ';\n   Valor total do pedido: R$' + valorPedido;
+            pedido.valortotal = valorPedido;
+            firebase.database().ref('/pedido/').push(pedido).then(alert("Pedido criado com sucesso!!"));
+            enviarPedidoWpp(msgWpp);
+            limparCarrinho();
+        }
+    }
+});
+
+function enviarPedidoWpp(msgWpp) {
+    window.open('https://api.whatsapp.com/send?phone=5521964365695&text=' + msgWpp);
 }
 
 pageProdCliente.limparCarrinho.addEventListener('click', function () {
-    i = 0;
+    limparCarrinho();
+});
+
+function limparCarrinho() {
     valorPedido = 0;
+    msgWpp = "";
+    $("#valorPedido").text("");
     htmlCarrinho = '';
     carrinho = [];
     $('#body-compra').html("");
     $('#body-compra').html(htmlCarrinho);
     $("#areaCompra").hide();
     $("#promocoes").show();
-});
+}
 
 function getProdutoById(idProd) {
     for (var key in pageProdCliente.produtos) {

@@ -65,6 +65,43 @@
         </div>
     </nav>
 
+    <!-- CARRINHO -->
+    <div id="areaCompra" class="container" style="display: none;">
+        <hr class="divider" style="border-color: transparent;">
+        <div class="bg-faded p-6 my-6">
+            <div class="row">
+                <div class="col-md-8 col-sm-12 col-xs-12 col-lg-12">
+                    <hr class="divider" style="max-width: 2000px;">
+                    <h2 class="text-center text-lg text-uppercase my-0">
+                <strong>Carrinho</strong></h2>
+            <hr class="divider" style="max-width: 2000px;">
+                    <div class="table-responsive">
+                        <div class="text-center">
+
+                            <table id="table-compra">
+                                <thead>
+                                    <th>Produto&nbsp;&nbsp;</th>
+                                    <th>Quantidade&nbsp;&nbsp;</th>
+                                    <th>Tipo&nbsp;&nbsp;&nbsp;</th>
+                                    <!--<th style="float: right;">Valor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                    <th>Confirmar</th>-->
+                                </thead>
+                                <tbody id="body-compra"></tbody>
+                            </table>
+                            <br/>
+                            <span style="float:left; padding-left: 5px;">Valor do Pedido: &nbsp;</span><span style="float: left;" id="valorPedido"></span>
+                            <br/>
+                            <input class="btn btn-primary" style="float: left; padding-left: 5px;" type="button" value="Enviar Pedido" id="enviarPedido">
+                            <input class="btn btn-primary" style="float: right;" type="button" value="Limpar Carrinho" id="limparCarrinho">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="divider" style="border-color: transparent;">
+    </div>
+
+    <!-- CONTAINER -->
     <div class="container" id="container">
         <div class="bg-faded p-6 my-6">
             <hr class="divider" style="border-color: transparent;">
@@ -104,35 +141,7 @@
     </div>
     <!-- /.container -->
 
-    <div id="areaCompra" style="display: none;">
-        <hr class="divider" style="border-color: transparent;">
-        <div class="bg-faded p-6 my-6">
-            <div class="row">
-                <div class="col-md-8 col-sm-12 col-xs-12 col-lg-12">
-                    <div class="table-responsive">
-                        <div class="text-center">
-                            <table id="table-compra">
-                                <thead>
-                                    <th>Produto&nbsp;&nbsp;</th>
-                                    <th>Quantidade&nbsp;&nbsp;</th>
-                                    <th>Tipo&nbsp;&nbsp;&nbsp;</th>
-                                    <!--<th style="float: right;">Valor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-                                    <th>Confirmar</th>-->
-                                </thead>
-                                <tbody id="body-compra"></tbody>
-                            </table>
-                            <br/>
-                            <span style="float:left;">Valor do Pedido: </span><span style="float: left;" id="valorPedido"></span>
-                            <br/>
-                            <input class="btn btn-primary" style="float: left;" type="button" value="Enviar Pedido" id="enviarPedido">
-                            <input class="btn btn-primary" style="float: center;" type="button" value="Limpar Carrinho" id="limparCarrinho">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr class="divider" style="border-color: transparent;">
-    </div>
+
 
     <footer class="bg-faded text-center py-5">
         <script src="js/produto.js" charset="utf-8"></script>
