@@ -35,22 +35,24 @@ function getProd() {
 }
 
 function preencheTabelaProduto(produto) {
-    var htmlFoto = '<img width="250" height=200" src="' + produto.fotoProduto + '"/>';
-    var html = '';
-    html += '<p>';
-    html += '<tr class="idDosProdutos" id="' + produto.uid + '">';
-    html += '<td class="foto">' + htmlFoto + '</td></tr>';
-    html += '<tr class="nomeProduto"><td class="text-uppercase my-0"><strong>' + produto.nomeProduto + '</strong></tr>';
-    html += '<tr class="pcongelado"><td>Preço congelado: R$' + produto.precoCongelado + '</td></tr>';
-    html += '<tr class="pfrito"><td>Preço frito: R$' + produto.precoFrito + '</td></tr>';
-    html += '<tr class="quantidade"><td>Pacote com ' + produto.quantidade + ' unidades</td><br/></tr>';
-    html += '<td class="comprar"><a target="_blank" href="https://api.whatsapp.com/send?phone=5521964365695&text=' + produto.nomeProduto + '"><i title=' + produto.nomeProduto + ' class="fa fa-whatsapp fa-2x" style="color: green;" aria-hidden="true"></i></a>&nbsp;&nbsp;';
-    html += '<a href="tel:5521964365695"><i class="fa fa-phone fa-2x" aria-hidden="true"></i></a>&nbsp;&nbsp;';
-    html += '<a onclick="addCompra(\'' + produto.uid + '\' )" href="#" class="add-produto"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i><br/><span style="font-size: 12px;">Adicionar ao carrinho';
-    html += '</td>';
-    html += '</tr><br/>';
-    html += '</p>';
-    $('#body-produtos').append(html);
+    if (produto.ativo) {
+        var htmlFoto = '<img width="250" height=200" src="' + produto.fotoProduto + '"/>';
+        var html = '';
+        html += '<p>';
+        html += '<tr class="idDosProdutos" id="' + produto.uid + '">';
+        html += '<td class="foto">' + htmlFoto + '</td></tr>';
+        html += '<tr class="nomeProduto"><td class="text-uppercase my-0"><strong>' + produto.nomeProduto + '</strong></tr>';
+        html += '<tr class="pcongelado"><td>Preço congelado: R$' + produto.precoCongelado + '</td></tr>';
+        html += '<tr class="pfrito"><td>Preço frito: R$' + produto.precoFrito + '</td></tr>';
+        html += '<tr class="quantidade"><td>Pacote com ' + produto.quantidade + ' unidades</td><br/></tr>';
+        html += '<td class="comprar"><a target="_blank" href="https://api.whatsapp.com/send?phone=5521964365695&text=' + produto.nomeProduto + '"><i title=' + produto.nomeProduto + ' class="fa fa-whatsapp fa-2x" style="color: green;" aria-hidden="true"></i></a>&nbsp;&nbsp;';
+        html += '<a href="tel:5521964365695"><i class="fa fa-phone fa-2x" aria-hidden="true"></i></a>&nbsp;&nbsp;';
+        html += '<a onclick="addCompra(\'' + produto.uid + '\' )" href="#" class="add-produto"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i><br/><span style="font-size: 12px;">Adicionar ao carrinho';
+        html += '</td>';
+        html += '</tr><br/>';
+        html += '</p>';
+        $('#body-produtos').append(html);
+    }
 }
 
 function limparTabelaProd() {
@@ -101,7 +103,7 @@ function addCarrinho(idProdutoCarrinho) {
     var tempProd = getProdutoById(idProdutoCarrinho);
     tempProd.valor = 0;
 
-    if ($('#tipoProd'+tempProd.uid).val() == 'congelado') {
+    if ($('#tipoProd' + tempProd.uid).val() == 'congelado') {
         qtdProduto = $("#qtdProduto" + tempProd.uid).val();
         cong = qtdProduto * tempProd.precoCongelado;
         carrinho[tempProd.uid].valor = cong;
