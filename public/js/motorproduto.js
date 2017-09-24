@@ -11,7 +11,8 @@ var pageProduto = {
     tableProduto: document.querySelector('#table-produto'),
     uploader: document.querySelector('#uploader'),
     fileButton: document.querySelector('#fileButton'),
-    mostraFoto: document.querySelector('#mostra-foto')
+    mostraFoto: document.querySelector('#mostra-foto'),
+    statusProduto: document.querySelector('#statusProduto')
 }
 
 
@@ -21,10 +22,11 @@ pageProduto.btnCriarProduto.addEventListener('click', function () {
         nomeProduto: pageProduto.nomeProduto.value,
         precoCongelado: pageProduto.precoCongelado.value,
         precoFrito: pageProduto.precoFrito.value,
-        quantidade: pageProduto.quantidade.value
+        quantidade: pageProduto.quantidade.value,
+        ativo: $("#statusProduto").val()
     }
     if (pageProduto.nomeProduto.value != "" && pageProduto.precoCongelado.value != "" &&
-        pageProduto.precoFrito.value != "" && pageProduto.fotoProduto.value != "" && pageProduto.quantidade.value != "") {
+        pageProduto.precoFrito.value != "" && pageProduto.fotoProduto != null && pageProduto.quantidade.value != "") {
         criarProduto(produto);
     } else {
         alert("Preencha os campos!");
@@ -119,6 +121,13 @@ function limparTabela() {
 pageProduto.criarNovoProduto.addEventListener('click', function () {
     $("#table-produto").hide();
     $("#criarproduto").show();
+
+    pageProduto.nomeProduto.value = "";
+    pageProduto.precoCongelado.value = "";
+    pageProduto.precoFrito.value = "";
+    pageProduto.quantidade.value = "";
+    pageProduto.statusProduto.value = "Sim";
+    pageProduto.mostraFoto.children[0].src = "";
 });
 
 pageProduto.voltarPageProduto.addEventListener('click', function () {

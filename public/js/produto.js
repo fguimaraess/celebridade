@@ -50,7 +50,7 @@ function preencheTabelaProduto(produto) {
         html += '<a onclick="addCompra(\'' + produto.uid + '\' )" href="#" class="add-produto"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i><br/><span style="font-size: 12px;">Adicionar ao carrinho';
         html += '</td>';
         html += '</tr><br/>';
-        html += '</p>';
+        html += '</p>';7
         $('#body-produtos').append(html);
     }
 }
