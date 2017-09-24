@@ -26,7 +26,7 @@ pageProduto.btnCriarProduto.addEventListener('click', function () {
         ativo: $("#statusProduto").val()
     }
     if (pageProduto.nomeProduto.value != "" && pageProduto.precoCongelado.value != "" &&
-        pageProduto.precoFrito.value != "" && pageProduto.fotoProduto != null && pageProduto.quantidade.value != "" && produto.ativo != "") {
+        pageProduto.precoFrito.value != "" && pageProduto.fotoProduto != null && pageProduto.quantidade.value != "" && produto.ativo != null) {
         criarProduto(produto);
     } else {
         alert("Preencha os campos!");
