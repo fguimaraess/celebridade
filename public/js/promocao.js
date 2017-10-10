@@ -22,7 +22,8 @@ function getPromocoes(){
             page.promocoes[promocaoRef.key] = (tempPromo);
             preencheTabelaPromocao(tempPromo);
         });
-    });
+    })
+    .then($("#loaderPromo").hide());
 }
 
 function preencheTabelaPromocao(promocao){

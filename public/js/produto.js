@@ -29,9 +29,9 @@ function getProd() {
             var tempProd = produtoRef.val();
             tempProd.uid = produtoRef.key;
             pageProdCliente.produtos[produtoRef.key] = (tempProd);
-            preencheTabelaProduto(tempProd);
+            preencheTabelaProduto(tempProd)
         });
-    });
+    }).then($(".loader").hide());
 }
 
 function preencheTabelaProduto(produto) {
